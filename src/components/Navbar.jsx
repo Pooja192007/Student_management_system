@@ -16,8 +16,8 @@ function Navbar() {
       <div className="nav-links">
         <Link to="/">Home</Link>
         <Link to="/students">Students</Link>
-        <Link to="/attendance">Attendance</Link>
         <Link to="/courses">Courses</Link>
+        <Link to="/attendance">Attendance</Link>
         <Link to="/academic-records">Academic Records</Link>
 
         <button onClick={handleLogout}>Logout</button>

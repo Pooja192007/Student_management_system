@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { supabase } from "../supabase";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -9,19 +8,17 @@ function Login() {
 
   const navigate = useNavigate();
 
-  const handleLogin = async (e) => {
+  const handleLogin = (e) => {
     e.preventDefault();
 
-    const { error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    if (error) {
-      setMessage(error.message);
-    } else {
-      navigate("/");
+    if (!emailPattern.test(email)) {
+      setMessage("Please enter a valid email address");
+      return;
     }
+
+    navigate("/");
   };
 
   return (
